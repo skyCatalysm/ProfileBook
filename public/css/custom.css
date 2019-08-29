@@ -6,3 +6,16 @@
     min-height: 100vh;
     background: transparent;
 }
+.transparent-img{
+    opacity: 0.2;
+    filter: alpha(opacity=20); /* For IE8 and earlier */
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+.t-img-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
