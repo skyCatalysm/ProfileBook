@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}PortfolioBook{% endblock %}
 
 {% block body %}
 
@@ -21,9 +21,9 @@
                         </div>
                     {% endif %}
                     <label for="inputEmail" class="sr-only">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mr-sm-1 my-1 my-sm-0" placeholder="Email" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="inputPassword" class="form-control my-1 my-sm-0" placeholder="Password" required>
 
                     <input type="hidden" name="_csrf_token"
                            value="{{ csrf_token('authenticate') }}"
@@ -60,7 +60,7 @@
         {% endfor %}
         <div class="container h-100">
                 <div class="row mt-5 h-100 justify-content-center align-items-center">
-                <div class="col-md-6 text-center">
+                <div class="col-6 d-none d-md-block text-center">
                     <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
                          alt="suit" class="img-fluid transparent-img">
                     <div class="t-img-text">
