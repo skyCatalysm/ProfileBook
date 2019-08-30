@@ -14,21 +14,46 @@
             <div class="collapse navbar-collapse" id="pb_nav">
                 <ul class="navbar-nav mr-auto">
                 </ul>
-{#                    {{ form_start(userForm,{'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}#}
-{#                    <div class="row">#}
-{#                        <div class="col-md-6">#}
-{#                            {{ form_row(userForm.email) }}#}
-{#                        </div>#}
-{#                        <div class="col-md-6">#}
-{#                            {{ form_row(userForm.password) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    {{ form_row(userForm.save, {'attr': {'class': 'btn btn-secondary ml-md-4 my-2 my-sm-0'}}) }}#}
-{#                    {{ form_end(userForm) }}#}
+                <form method="post" action="{{ path('app_login') }}" class="form-inline my-2 my-lg-0">
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
+
+                    <button class="btn btn-light ml-md-4 my-2 my-sm-0" type="submit">
+                        Sign in
+                    </button>
+                </form>
             </div>
         </nav>
+        {% if error %}
+            <div class="alert alert-dismissible alert-danger my-2 my-lg-0 text-center">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <span class="">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+            </div>
+        {% endif %}
         {% for message in app.flashes('success') %}
-            <div class="alert alert-dismissible alert-success">
+            <div class="alert alert-dismissible alert-success my-2 my-lg-0 text-center">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Well done!</strong> {{ message }}
             </div>

@@ -21,11 +21,13 @@ class UserType extends AbstractType
                 'label' => 'Email'
             ])
             ->add('password', RepeatedType::class, array(
+                'invalid_message' => 'Password and confirmation password do not match.',
                 'type' => PasswordType::class,
                 'first_options'  => array('attr'=>array('placeholder' => 'Password', 'class' => 'my-1'),'label'=> 'Password'),
-                'second_options' => array('attr'=>array('placeholder' => 'Re-enter Password', 'class' => 'my-1'),'label'=> 'Re-enter Password'),
+                'second_options' => array('attr'=>array('placeholder' => 'Confirm Password', 'class' => 'my-1'),'label'=> 'Re-enter Password'),
             ))
-            ->add('Get Started', SubmitType::class, [
+            ->add('save', SubmitType::class, [
+                'label' => 'Get Started',
                 'attr' => array('class' => 'btn btn-primary btn-block')
             ])
         ;
