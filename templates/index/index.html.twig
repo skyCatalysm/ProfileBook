@@ -6,6 +6,7 @@
 
     <div class="parallax-full">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
             <a class="navbar-brand" href="{{ path('index') }}">ProfileBook</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pb_nav" aria-controls="pb_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,11 +16,6 @@
                 <ul class="navbar-nav mr-auto">
                 </ul>
                 <form method="post" action="{{ path('app_login') }}" class="form-inline my-2 my-lg-0">
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                    {% endif %}
                     <label for="inputEmail" class="sr-only">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mr-sm-1 my-1 my-sm-0" placeholder="Email" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
@@ -44,6 +40,7 @@
                         Sign in
                     </button>
                 </form>
+            </div>
             </div>
         </nav>
         {% if error %}
